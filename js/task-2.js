@@ -1,3 +1,5 @@
+
+
 const images = [
   {
     url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
@@ -25,18 +27,31 @@ const images = [
   }
 ];
 
+///////////////////////////////////////////////////////////////////////
 
 const galleryList = document.querySelector('.gallery');
-//console.log(galleryList);
-images.forEach(image => 
-  {
-    const itemOfList = document.createElement('li');
-    galleryList.append(itemOfList);
-    const currentImg = document.createElement('img');  
-    itemOfList.append(currentImg);
-    currentImg.src = image.url;
-    currentImg.alt = image.alt;
-    
-  }
-);
+  
+const markup = images.map(image =>
+  `<li class="gallery-list-item"><img src=${image.url} alt=${image.alt}/></li>`).join('');
+ galleryList.insertAdjacentHTML('afterbegin', markup);
 
+const styles = document.createElement('style');
+styles.textContent =
+  ` .gallery{
+      list-style-type: none;
+      display: flex;
+      gap: 48px 24px;
+       flex-wrap: wrap;
+       margin: 0;
+       padding: 100px 156px;
+    }
+        .gallery img {
+          display: block;
+            width: 100%;
+           height: 100%;
+          }  
+       .gallery li {
+         flex: calc((100% - 48px)/3);
+          }
+ `;
+document.head.append(styles);
