@@ -25,8 +25,8 @@ textInput.addEventListener("input", (event) => {
 
 const styles = document.createElement('style');
 styles.textContent =
-  ` 
-  #name-input{
+  `
+    #name-input{
       margin: 0 auto 0 auto;
      width: 360px;
     height: 40px;
