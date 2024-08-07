@@ -4,6 +4,7 @@
 const registerForm = document.querySelector(".login-form");
 
 registerForm.addEventListener("submit", handleSubmit);
+
 const loginFormObject = {};
  
 function handleSubmit(event) {
@@ -13,11 +14,17 @@ function handleSubmit(event) {
   const password = form.elements.password.value.trim();
   
   if (email === "" || password === "") {
-    return alert('All form fields must be filled in');
+    alert('All form fields must be filled in');
+  } else {
+    for(let element of registerForm.elements) {
+      if(element.name) {
+        loginFormObject[element.name] = element.value.trim(); 
+      }
+    }
+    console.log(loginFormObject); 
   }
-    loginFormObject.email = email;
-    loginFormObject.password = password;
-  console.log(loginFormObject); 
+   
+  
   form.reset();
 }
 ////////////////////////////////////////////////////////////////
@@ -26,7 +33,28 @@ const styles = document.createElement('style');
 styles.textContent =
   ` .login-form{
         display: flex;
-     flex-direction: column;
-  }
+       flex-direction: column;
+       border-radius: 8px;
+        padding: 24px;
+        width: 408px;
+         margin: 0 auto;
+        background: #fff;
+     }
+        label, input{
+         display: block;
+        }
+        input{
+         display: block;
+         width: 360px;
+        height: 40px;
+        }
+     button{
+     margin-top: 16px;
+       border-radius: 8px;
+         padding: 8px 16px;         
+          width: 86px;
+         height: 40px;
+        background: #4e75ff; 
+     }
  `;
-document.head.append(styles);
+document.head.append(styles); 
