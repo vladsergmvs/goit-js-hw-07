@@ -7,16 +7,18 @@ function getRandomHexColor() {
 const changeColorButton = document.querySelector('.change-color');
 const colorName = document.querySelector('.color');
 
-changeColorButton.addEventListener('click', (event) => {
+changeColorButton.addEventListener('click', event => {
   event.preventDefault();
-  document.body.style.backgroundColor = getRandomHexColor();
-  colorName.textContent = getRandomHexColor();
+  const currentColor = getRandomHexColor();
+  document.body.style.backgroundColor = currentColor;
+  colorName.textContent = currentColor;
+  colorName.style.color = currentColor;
 });
 /////////////////////////////////////////////////
 
 const styles = document.createElement('style');
-styles.textContent =
-  ` .widget{
+styles.textContent = `
+  .widget{
        border-radius: 8px;
       padding: 100px 88px;
       width: 345px;
@@ -31,4 +33,4 @@ styles.textContent =
       background: #4e75ff;
   }
  `;
-document.head.append(styles); 
+document.head.append(styles);
